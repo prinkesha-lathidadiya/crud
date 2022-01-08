@@ -1,0 +1,63 @@
+<div>
+<button class="btn btn-dark" (click)="changeSelection('a')">Show Name</button>  &nbsp;&nbsp;
+<button class="btn btn-dark" (click)="changeSelection('b')">Show Image</button>&nbsp;&nbsp;
+<button class="btn btn-dark" (click)="changeSelection('c')">Show Contact</button>&nbsp;&nbsp;
+<button class="btn btn-dark" (click)="changeSelection('d')">Show Address</button>&nbsp;&nbsp;
+<button class="btn btn-dark" (click)="changeSelection('e')">Show Age</button>&nbsp;&nbsp;
+<button class="btn btn-dark" (click)="changeSelection('f')">Show Email</button>&nbsp;&nbsp;
+<button class="btn btn-dark" (click)="changeSelection('g')">Show Name & Image & Contact</button>&nbsp;&nbsp;
+<button class="btn btn-dark" (click)="changeSelection('h')">Show age & Name</button>&nbsp;&nbsp;
+<button class="btn btn-dark" (click)="changeSelection('i')">Show All</button> <br>
+<hr>
+
+<select [(ngModel)]="selection">
+    <option value="a">Show Name</option>
+    <option value="b">Show Image</option>
+    <option value="c">Show Contact</option>
+    <option value="d">Show Address</option>
+    <option value="e">Show Age</option>
+    <option value="f">Show Email</option>
+    <option value="g">Show Name & Image & Contact</option>
+    <option value="h">Show age & Name</option>
+    <option value="i">Show All</option>
+</select>
+
+<div *ngIf="selection == 'a'">
+    My Name Is Prinkesha Lathidadiya
+</div>
+<div *ngIf="selection == 'b'">
+    <img src="../../assets/member3.jpg" alt="">
+</div>
+<div *ngIf="selection == 'c'">
+    7046809512
+</div>
+<div *ngIf="selection == 'd'">
+    a:302 panvel plalace mota varachha surat
+</div>
+<div *ngIf="selection == 'e'">
+    21
+</div>
+<div *ngIf="selection == 'f'">
+    prinkeshalathidadiya2021@gamil.com
+</div>
+<div *ngIf="selection == 'g'">
+    My Name Is Prinkesha Lathidadiya <br>
+    <img src="../../assets/member3.jpg" alt=""> <br>
+    7046809512
+</div>
+<div *ngIf="selection == 'h'">
+    21 <br>
+    My Name Is Prinkesha Lathidadiya 
+</div>
+<div *ngIf="selection == 'i'">
+    My Name Is Prinkesha Lathidadiya <br>
+    <img src="../../assets/member3.jpg" alt=""> <br>
+    Contact: 7046809512 <br>
+    Address: a:302 panvel plalace mota varachha surat <br>
+    Age :21 <br>
+    Email :prinkeshalathidadiya2021@gamil.com <br>
+</div>
+
+</div>
+
+

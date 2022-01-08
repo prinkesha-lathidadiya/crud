@@ -1,0 +1,181 @@
+<!-- <div class="form-wrapper container mt-5">
+    <form class="form" [formGroup]="userForm">
+        <div class="form-group">
+            <label>First Name</label>
+            <input type="text" required formControlName="firstName" class="form-control" name="firstName" />
+            <span
+                *ngIf="!userForm.get('firstName')?.valid && userForm.get('firstName')?.touched && userForm.get('firstName')?.errors?.required">
+                First Name is required
+            </span>
+
+            
+        </div>
+
+        <div class="form-group">
+            <label>middle Name</label>
+            <input type="text" required formControlName="middleName" class="form-control" name="middleName" />
+            <span
+                *ngIf="!userForm.get('middleName')?.valid && userForm.get('middleName')?.touched && userForm.get('middleName')?.errors?.required">
+                last Name is required
+            </span>
+            </div>
+        <!-- <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" formControlName="lastName" class="form-control" name="lastName" />
+        </div> -->
+
+-->
+
+<!-- <div class="form-group">
+        <label>Entered Name Is: {{ userForm.get('firstName')?.value }}</label>
+    </div> -->
+
+<!-- <div class="form-group">
+        
+        <label>age</label>
+        <input type="text" required formControlName="age" class="form-control" name="firstName" />
+        <span
+            *ngIf="!userForm.get('age')?.valid && userForm.get('age')?.touched && userForm.get('age')?.errors?.required">
+            age Name is required
+        </span>
+        </div>
+
+
+
+        
+    <div class="form-group">
+        <label>email</label>
+        <input type="text" required formControlName="age" class="form-control" name="firstName" />
+        <span
+            *ngIf="!userForm.get('age')?.valid && userForm.get('age')?.touched && userForm.get('age')?.errors?.required">
+            email Name is required
+        </span>
+        </div>
+
+
+    <div class="form-group mt-3">
+        <button class="btn btn-success" type="submit" [disabled]="!userForm.valid">Submit</button>
+    </div>
+</form>
+</div> -->
+<div class="form-wrapper container mt-5">
+    <form class="form" [formGroup]="userForm">
+        <div class="form-group"
+            [ngClass]="{ 'form-invalid': !userForm.get('firstName')?.valid && userForm.get('firstName')?.touched }">
+            <label>First Name</label>
+            <input type="text" required formControlName="firstName" class="form-control" name="firstName" />
+            <span
+                *ngIf="!userForm.get('firstName')?.valid && userForm.get('firstName')?.touched && userForm.get('firstName')?.errors?.required">
+                First Name is required
+            </span>
+        </div>
+        <br>
+        <div class="form-group">
+            <label>Middle Name</label>
+            <input type="text" formControlName="middleName" class="form-control" name="middleName" />
+            <span
+                *ngIf="!userForm.get('middleName')?.valid && userForm.get('middleName')?.touched && userForm.get('middleName')?.errors?.required">
+                middleName is required
+            </span>
+        </div>
+        <br>
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" formControlName="lastName" class="form-control" name="lastName" />
+            <span
+                *ngIf="!userForm.get('lastName')?.valid && userForm.get('lastName')?.touched && userForm.get('lastName')?.errors?.required">
+                last Name is required
+            </span>
+        </div>
+        <br>
+        <div class="form-group"
+            [ngClass]="{ 'form-invalid': !userForm.get('age')?.valid && userForm.get('age')?.touched }">
+            <label>Age</label>
+            <input type="text" required formControlName="age" class="form-control" name="age" />
+            <span
+                *ngIf="!userForm.get('age')?.valid && userForm.get('age')?.touched && userForm.get('age')?.errors?.required">
+                Age is required
+            </span>
+            <span
+                *ngIf="!userForm.get('age')?.valid && userForm.get('age')?.touched && userForm.get('age')?.errors?.pattern">
+                Age should be greater than 18
+            </span>
+        </div>
+        <br>
+        <div class="form-group">
+            <label>Gender:</label>&nbsp;
+            <input type="radio" formControlName="gender" value="boys" /> boys &nbsp;
+            <input type="radio" formControlName="gender" value="girls" /> girls
+        </div><br>
+        <div class="form-group">
+            <label for="palace">Choose your favrite palace:</label>
+            <select formControlName="palace" name="palace" class="form-control">
+                <option value="">maldiv</option>
+                <option value="">goa</option>
+                <option value="">london</option>
+                <option value="">singapur</option>
+            </select>
+        </div>
+        <div class="form-group"
+            [ngClass]="{ 'form-invalid': !userForm.get('email')?.valid && userForm.get('email')?.touched }">
+            <label>Email</label>
+            <input type="text" required formControlName="email" class="form-control" name="email" />
+            <span
+                *ngIf="!userForm.get('email')?.valid && userForm.get('email')?.touched && userForm.get('email')?.errors?.required">
+                Email is required
+            </span>
+            <span
+                *ngIf="!userForm.get('email')?.valid && userForm.get('email')?.touched && userForm.get('email')?.errors?.email">
+                Please enter a valid email
+            </span>
+        </div>
+        <br>
+
+        <!-- <div formGroupName="address"> -->
+            <h2>Address</h2>
+            <div class="form-group">
+                <label>Street</label>
+                <input type="text" formControlName="street" class="form-control" name="street" />
+                <span
+                    *ngIf="!userForm.get('street')?.valid && userForm.get('street')?.touched && userForm.get('street')?.errors?.required">
+                    street is required
+                </span>
+            </div><br><br>
+
+
+            <div class="form-group">
+                <label>City:</label>
+                <input type="text" formControlName="city" class="form-control" name="city" />
+                <span
+                    *ngIf="!userForm.get('city')?.valid && userForm.get('city')?.touched && userForm.get('city')?.errors?.required">
+                    city is required
+                </span>
+            </div><br><br>
+
+            <div class="form-group">
+                <label>State:</label>
+                <input type="text" formControlName="state" class="form-control" name="state" />
+                <span
+                    *ngIf="!userForm.get('state')?.valid && userForm.get('state')?.touched && userForm.get('state')?.errors?.required">
+                    city is required
+                </span>
+            </div><br><br>
+
+
+
+            <div class="form-group">
+                <label>Zip Code:</label>
+                <input type="text" formControlName="zip" class="form-control" name="zip" />
+                <span
+                    *ngIf="!userForm.get('zip')?.valid && userForm.get('zip')?.touched && userForm.get('zip')?.errors?.required">
+                    zip is required
+                </span>
+            </div><br><br>
+        <!-- </div> -->
+
+
+        <div class="form-group mt-3">
+            <button class="btn btn-success" type="submit" [disabled]="!userForm.valid">Submit</button>
+        </div>
+    </form>
+</div>

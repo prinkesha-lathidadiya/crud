@@ -1,0 +1,107 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="form" [formGroup]="users">
+      <!-------------simple-------------------- -->
+      <div class="form-group" [ngClass]="{ 'form-invalid': !users.get('name')?.valid && users.get('name')?.touched }">
+        <label>Name</label>
+        <input type="text" required formControlName="name" class="form-control" name="name" />
+      </div>
+      <!-- ------------selection  -------------->
+      <div class="form-group">
+        <label for="cloth">clothSize:</label>
+        <select formControlName="clothSize" name="cloth" class="form-control">
+          <option value="">Choose clothSize</option>
+          <option [value]="cloth" *ngFor="let cloth of clothSize">{{cloth}}</option>
+        </select>
+      </div>
+      <!---------------------- checkbox----------------- -->
+      <div class="form-group">
+        <label>Hobbies :</label> &nbsp;
+        <input type="checkbox" name="userHobbies" value="Reading" /> Reading &nbsp;
+        <input type="checkbox" name="userHobbies" value="Dancing" /> Dancing &nbsp;
+        <input type="checkbox" name="userHobbies"  value="Exersice" /> Exersice
+      </div> <br>
+     <!-------------- radio ----------------->
+      <div class="form-group">
+        <label>Gender:</label>&nbsp;
+        <input type="radio" formControlName="gender" value="boys" /> boys &nbsp;
+        <input type="radio" formControlName="gender" value="girls" /> girls
+      </div><br>
+      <!-------------email----------->
+      <div class="form-group"
+              [ngClass]="{ 'form-invalid': !users.get('email')?.valid && users.get('email')?.touched }">
+              <label>Email</label>
+              <input type="text" required formControlName="email" class="form-control" name="email" />
+              <span
+                  *ngIf="!users.get('email')?.valid && users.get('email')?.touched && users.get('email')?.errors?.required">
+                  Email is required
+              </span>
+              <span
+                  *ngIf="!users.get('email')?.valid && users.get('email')?.touched && users.get('email')?.errors?.email">
+                  Please enter a valid email
+              </span>
+          </div>
+          <br>
+  
+      <button class="btn btn-success my-4 text-center" (click)="addUsers()">{{ appState.edit ? 'Update' : 'Add' }} User</button>
+  
+    </form>
+  </div>
+  <!-- <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div> -->
+</ng-template>
+
+<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
+
+<hr>
+
+<pre>{{ closeResult }}</pre>
+
+
+
+<div *ngIf="!appState.delete">
+ 
+  <a class="btn btn-success my-4" *ngIf="appState.edit" routerLink="/users/create">Create new user</a>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>clothSize</th>
+        <th>userHobbies</th>
+        <th>gender</th>
+        <th>email</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of usersArray">
+        <td>{{ data.id }}</td>
+        <td>{{ data.name }}</td>
+        <td>{{ data.clothSize }}</td>
+        <td>{{ data.userHobbies }}</td>
+        <td>{{ data.gender }}</td>
+        <td>{{ data.email }}</td>
+        <td>
+          <button class="btn btn-outline-primary" style="margin-right: 10px;" (click)="navigateToEdit(data.id)">Edit user</button>
+          <button class="btn btn-danger" (click)="deleteUser(data.id)">Delete user</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="appState.delete">
+  <button class="btn btn-danger" (click)="deleteUser(activeUser.id)">Delete the user</button>
+</div>
+
+
+
+
+

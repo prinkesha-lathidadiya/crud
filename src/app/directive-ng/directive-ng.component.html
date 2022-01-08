@@ -1,0 +1,45 @@
+<button class="btn btn-outline-primary me-3" (click)="changeColor('primary')">primary</button>
+<button class="btn btn-outline-success me-3" (click)="changeColor('success')">success</button>
+<button class="btn btn-outline-danger me-3" (click)="changeColor('danger')">danger</button>
+<button class="btn btn-outline-secondary me-3" (click)="changeColor('secondary')">secondary</button> <br>
+<hr>
+
+
+<select [(ngModel)]="selection">
+    <option value="a">Methods display  1</option>
+    <option value="b">Methods display 2</option>
+    <option value="c">Methods display 3</option>
+    <option value="d">Methods display 4</option>
+    <option value="e">Methods display 5</option>
+    <option value="f">Methods display 6</option>
+    <option value="g">Methods display 7 & Methods display 2</option>
+    <option value="h">Methods display 1 & Methods display 4 & Methods display 6 </option>
+    <option value="i">Methods display All</option>
+</select>
+
+<div *ngIf="selection == 'a' || selection == 'h' || selection == 'i'">
+    <p class="mt-5"
+        [ngClass]="{'bg-primary': chooseColor == 'primary', 'bg-success': chooseColor == 'success','bg-danger': chooseColor == 'danger','bg-secondary': chooseColor == 'secondary'}">
+      prinkesha </p>
+</div>
+<div *ngIf="selection == 'b' || selection == 'g' || selection == 'i'">
+    <p class="mt-5"
+        [ngClass]="{'bg-primary': chooseColor == 'primary', 'bg-success': chooseColor == 'success','bg-danger': chooseColor == 'danger','bg-secondary': chooseColor == 'secondary'}">
+      lathidadiya </p>
+</div>
+
+<div *ngIf="selection == 'c' || selection == 'i'">
+    <p class="mt-5" [ngClass]="getColor()">prinkesha lathidadiya</p>
+</div>
+<div *ngIf="selection == 'd' || selection == 'h' || selection == 'i'">
+    <p class="mt-5"
+        [ngStyle]="{'background-color': chooseColor == 'primary' ? 'skyblue' : chooseColor == 'success' ? 'green': chooseColor == 'danger'? 'red' : chooseColor == 'secondary' ? 'gray' : ''}">
+      prinkesha </p>
+</div>
+<div *ngIf="selection == 'e' || selection == 'i'">
+    <p class="mt-5"[style.background-color]="chooseColor == 'primary' ? 'skyblue' : chooseColor == 'success' ? 'green' : chooseColor == 'danger' ? 'red':  chooseColor == 'secondary' ? 'gray' : ''"[style.color]="chooseColor == 'primary' ? 'black' : chooseColor == 'success' ? 'white' : chooseColor == 'danger' ? 'white':  chooseColor == 'secondary' ? 'white' : ''">dhulo vandro kutro</p>
+</div>
+<div *ngIf="selection == 'f' || selection == 'h' || selection == 'i'">
+    <p class="mt-5" [ngStyle]="getOperation()">
+      prinkesha lathi </p>
+</div>

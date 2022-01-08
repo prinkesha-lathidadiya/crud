@@ -1,0 +1,37 @@
+<div class="container">
+    <form [formGroup]="role">
+        <div class="form-group">
+            <label for="">roleName :</label>
+            <input type="text" formControlName="roleName" class="form-control" name="roleName">
+        </div> <br>
+        <!-- <div class="form-group">
+            <label>isActive :</label> &nbsp;
+            <input type="checkbox" name="isActive" value="True" /> True &nbsp;
+            <input type="checkbox" name="isActive" value="False" /> False
+        </div> <br> -->
+        <div class="form-group">
+            <label>isActive :</label> &nbsp;
+            <input type="checkbox" name="isActive" value="True" /> True &nbsp;
+            <input type="checkbox" name="isActive"  value="False" /> False &nbsp;
+        </div> <br>
+        <button class="btn btn-success" (click)="addRole()">Add Product</button>
+    </form>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>roleName</th>
+                <th>isActive</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of roleData">
+                <td>{{ item.roleName }}</td>
+                <td>{{ item.isActive }}</td>
+                <td>
+                    <button class="btn btn-success" (click)="editRole(item)">Edit</button>
+                    <button class="btn btn-danger" (click)="deleteRole(item.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

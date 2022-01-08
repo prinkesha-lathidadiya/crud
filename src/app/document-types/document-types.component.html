@@ -1,0 +1,33 @@
+<div class="container">
+    <form [formGroup]="documentType">
+        <div class="form-group">
+            <label for="">documentType :</label>
+            <input type="text" formControlName="documentType" class="form-control" name="documentType">
+        </div> <br>
+
+        <div class="form-group">
+            <label>isActive :</label> &nbsp;
+            <input type="checkbox" name="isActive" value="True" /> True &nbsp;
+            <input type="checkbox" name="isActive"  value="False" /> False &nbsp;
+        </div> <br>
+        <button class="btn btn-success" (click)="adddocument()">Add Product</button>
+    </form>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>documentType</th>
+                <th>isActive</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of documentData">
+                <td>{{ item.documentType }}</td>
+                <td>{{ item.isActive }}</td>
+                <td>
+                    <button class="btn btn-success" (click)="editdocument(item)">Edit</button>
+                    <button class="btn btn-danger" (click)="deletedocument(item.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

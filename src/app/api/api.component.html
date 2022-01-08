@@ -1,0 +1,57 @@
+<div class="container">
+    <form [formGroup]="studentForm">
+        <div class="form-group mt-3">
+            <label>First Name :</label>&nbsp;
+            <input type="text" name="firstName" formControlName="firstName" />
+        </div> <br>
+        <div class="form-group">
+            <label>Last Name :</label>&nbsp;
+            <input type="text" name="lastName" formControlName="lastName" />
+        </div> <br>
+        <div class="form-group">
+            <label>Hobbies :</label> &nbsp;
+            <input type="checkbox" name="userHobbies" [checked]="userHobbies.includes('Reading')" (change)="updateHobby($event)" value="Reading" /> Reading &nbsp;
+            <input type="checkbox" name="userHobbies" [checked]="userHobbies.includes('Dancing')" (change)="updateHobby($event)" value="Dancing" /> Dancing &nbsp;
+            <input type="checkbox" name="userHobbies" [checked]="userHobbies.includes('Exersice')" (change)="updateHobby($event)" value="Exersice" /> Exersice
+        </div> <br>
+        <div class="form-group">
+            <label>Gender :</label>&nbsp;
+            <input type="radio" formControlName="gender"  value="Male"  /> Male &nbsp;
+            <input type="radio" formControlName="gender"  value="Female" /> Female
+        </div><br>
+        <div class="form-group">
+            <label>Age :</label>&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="number" name="age" formControlName="age" />
+        </div> <br>
+        <div class="form-group">
+            <label>Image</label>
+            <input type="file" class="form-control" name="userImage" (change)="handleFileInput($event)" />
+        </div> <br>
+        <div class="form-group">
+            <label>id :</label>&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="number" name="id" formControlName="_id" />
+        </div> <br>
+        <button class="btn btn-success" (click)="addStudent()">Add Student</button>
+    </form>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Ation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of studentData">
+                <td>{{ item.firstName }}</td>
+                <td>{{ item.lastName }}</td>
+                <td><img style="width: 100px;" [src]="item.image" [alt]="item.firstName"></td>
+                <td>
+                    <button class="btn btn-success" (click)="editStudent(item)">Edit</button>
+                    <button class="btn btn-danger" (click)="deleteStudent(item._id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

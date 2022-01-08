@@ -1,0 +1,77 @@
+<div class="container">
+    <form [formGroup]="product">
+        <div class="form-group">
+            <label for="">category :</label>
+            <select formControlName="category" name="category" class="form-control">
+                <!-- <option value="">Description </option> -->
+                <option [value]="category" *ngFor="let category of category">{{category}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>productName :</label>&nbsp;
+            <input type="text" name="productName" formControlName="productName" />
+        </div> <br>
+        <div class="form-group">
+            <label for="cloth">description :</label>
+            <select formControlName="description" name="des" class="form-control">
+                <!-- <option value="">Description </option> -->
+                <option [value]="des" *ngFor="let des of Description">{{des}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>price :</label>&nbsp;
+            <input type="number" name="price" formControlName="price" />
+        </div> <br>
+        
+        <div class="form-group">
+            <label for="cloth">clothSize:</label>
+            <select formControlName="clothSize" name="cloth" class="form-control">
+                <option value="">Choose clothSize</option>
+                <option [value]="cloth" *ngFor="let cloth of clothSize">{{cloth}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>inStock :</label>&nbsp;
+            <input type="text" name="inStock" formControlName="inStock" />
+        </div> <br>
+        <!-- <div class="form-group">
+            <label>Description :</label>&nbsp;
+            <input type="text" name="description" formControlName="description" />
+        </div> <br> -->
+        <div class="form-group">
+            <label>id :</label>&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="number" name="id" formControlName="id" />
+        </div> <br>
+        <button class="btn btn-success" (click)="addProduct()">Add Product</button>
+    </form>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>category</th>
+                <th>productName</th>
+                <th>description</th>
+                <th>price</th>
+                <th>clothSize</th>
+                <th>inStock</th>
+                <th>action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of productData">
+                <td>{{ item.category }}</td>
+                <td>{{ item.productName }}</td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ item.clothSize }}</td>
+                <td>{{ item.inStock }}</td>
+                <td>
+                    <button class="btn btn-success" (click)="editProduct(item)">Edit</button>
+                    <button class="btn btn-danger" (click)="deleteProduct(item._id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
